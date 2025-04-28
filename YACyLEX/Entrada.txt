@@ -1,0 +1,11 @@
+Entrada Correcta 
+4*5=20
+4/4=1
+40+80=120
+1990-1900=90
+
+Entrada Incorrecta 
+8+f= error
+f*f= error
+484- 
+78f /54
