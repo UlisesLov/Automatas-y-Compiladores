@@ -19,14 +19,27 @@ statements:
     ;
 
 statement:
-      expression EOL        { printf("= %d\n", $1); }
+      expression EOL        
+    { 
+        printf("= %d\n", $1); 
+    }
     ;
 
 expression:
-      NUMBER                { $$ = $1; printf("number: %d\n", $$); }
+      NUMBER                
+    { 
+        $$ = $1; 
+        printf("number: %d\n", $$); 
+    }
 
-    | expression TIMES expression
-                            { $$ = $1 * $3; printf("* %d\n", $$); }
+ 
+
+  | expression TIMES expression
+    {
+        $$ = $1 * $3;
+        printf("Resultado de %d * %d = %d (correcto)\n", $1, $3, $$);
+    }
+
 
     ;
 
