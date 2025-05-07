@@ -1,3 +1,4 @@
+/* scanner.l */
 %option noyywrap
 %{
     #include <stdio.h>
@@ -9,16 +10,24 @@
 
 %%
 
-[0-9]+      { yylval = atoi(yytext); return NUMBER; }
+[0-9]+      { 
+                yylval = atoi(yytext); 
+                return NUMBER; 
+            }
 
-"*"	    { return TIMES; }
-
+"*"         { return TIMES; }
+"+"         { return PLUS; }
+"-"         { return MINUS; }
+"/"         { return DIVIDE; }
 
 \n          { return EOL; }
-[ \t\r]+    { /* skip whitespace */ }
+[ \t\r]+    { }
+
+.           { fprintf(stderr, "Carácter no válido: '%s'\n", yytext); }
 
 %%
 
 int yywrap(void) {
     return 1;
 }
+
